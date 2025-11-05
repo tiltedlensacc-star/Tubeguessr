@@ -1,0 +1,137 @@
+{
+  "identifier" : "9BB82FDB",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6476274242",
+    "_developerTeamID" : "MM8B7V2TZY",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 748649808.50399101,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21480890",
+      "localizations" : [
+
+      ],
+      "name" : "Season Ticket",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.15",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6476274248",
+          "introductoryOffer" : {
+            "internalID" : "20482697",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Get unlimited daily games and advanced statistics",
+              "displayName" : "Season Ticket Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.tubeguessr.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Season Ticket Monthly",
+          "subscriptionGroupID" : "21480890",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "11.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6476274249",
+          "introductoryOffer" : {
+            "internalID" : "20482698",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Get unlimited daily games and advanced statistics - best value!",
+              "displayName" : "Season Ticket Yearly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.tubeguessr.premium.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Season Ticket Yearly",
+          "subscriptionGroupID" : "21480890",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
