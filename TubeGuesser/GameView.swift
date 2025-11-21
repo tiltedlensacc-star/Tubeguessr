@@ -165,7 +165,7 @@ struct GameView: View {
                 showHowToPlay = false
             })
         }
-        .fullScreenCover(isPresented: $showSubscription) {
+        .sheet(isPresented: $showSubscription) {
             SeasonTicketView()
         }
     }
