@@ -244,12 +244,7 @@ class GameManager: ObservableObject {
     }
 
     private func isGuessCorrect(_ guess: String, for station: Station) -> Bool {
-        let normalizedGuess = guess.lowercased()
-            .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "'", with: "")
-            .replacingOccurrences(of: ".", with: "")
-            .replacingOccurrences(of: "-", with: "")
-            .replacingOccurrences(of: "&", with: "and")
+        let normalizedGuess = normalizeStationName(guess)
 
         // Exact match
         if normalizedGuess == station.normalizedName {
@@ -258,6 +253,32 @@ class GameManager: ObservableObject {
 
         // Check for 1-character difference (fuzzy matching)
         return isOneCharacterDifferent(normalizedGuess, station.normalizedName)
+    }
+
+    private func normalizeStationName(_ name: String) -> String {
+        var normalized = name.lowercased()
+
+        // Remove all types of apostrophes and quotes
+        let apostrophes = ["'", "\u{2018}", "\u{2019}"] // straight, left single, right single
+        for apostrophe in apostrophes {
+            normalized = normalized.replacingOccurrences(of: apostrophe, with: "")
+        }
+
+        let quotes = ["\"", "\u{201C}", "\u{201D}"] // straight, left double, right double
+        for quote in quotes {
+            normalized = normalized.replacingOccurrences(of: quote, with: "")
+        }
+
+        // Remove other punctuation and spaces
+        normalized = normalized
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: ",", with: "")
+            .replacingOccurrences(of: "-", with: "")
+            .replacingOccurrences(of: "_", with: "")
+            .replacingOccurrences(of: "&", with: "and")
+
+        return normalized
     }
 
     private func isOneCharacterDifferent(_ guess: String, _ correct: String) -> Bool {

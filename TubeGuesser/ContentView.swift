@@ -25,6 +25,16 @@ struct ContentView: View {
                     .padding(.vertical, 8)
                 }
                 .tag(1)
+
+            SettingsView()
+                .tabItem {
+                    VStack(spacing: 4) {
+                        Image(systemName: "gearshape.fill")
+                        Text("About")
+                    }
+                    .padding(.vertical, 8)
+                }
+                .tag(2)
         }
         .accentColor(Color(hex: "#2E7DF6"))
         .preferredColorScheme(.light)

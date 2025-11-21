@@ -3,12 +3,12 @@
 ## Overview
 I've implemented a complete in-app subscription system for TubeGuessr with a **freemium model focused on unlimited games**:
 
-### 🎯 Premium Features
+### 🎯 Season Ticket Features
 - **Unlimited Daily Games**: Play as many rounds as you want every day
 - **No Daily Limits**: Never wait until tomorrow to play again
 - **Advanced Statistics**: Detailed analytics and performance insights
 - **Priority Access**: First to try new features and stations
-- **Exclusive Content**: Access to premium station collections
+- **Exclusive Content**: Access to exclusive station collections
 
 ### 📁 Files Created
 1. **`SubscriptionManager.swift`** - Complete StoreKit 2 implementation
@@ -47,30 +47,29 @@ Then uncomment the subscription-related code:
 4. Under **StoreKit Configuration**, select `Configuration.storekit`
 
 ### Step 4: App Store Connect Setup (for production)
-1. Create subscription products in App Store Connect:
-   - **Monthly**: `com.tubeguessr.premium.monthly` (£0.99/month)
-   - **Yearly**: `com.tubeguessr.premium.yearly` ($29.99/year)
-2. Both include 1-week free trials
-3. Update product IDs in `SubscriptionManager.swift` if needed
+1. Create subscription product in App Store Connect:
+   - **Season Ticket Monthly**: `com.tubeguessr.seasonticket.monthly` (£0.99/month)
+2. Include 1-week free trial
+3. Product ID must match exactly: `com.tubeguessr.seasonticket.monthly`
 
 ## 🎮 How It Works
 
 ### Current Implementation
 - **Free users**: Get full access to all hints and features, but limited to one game per day
-- **Premium users**: Can play unlimited games throughout the day
-- **Premium prompt**: Appears after completing a game (for free users only)
-- **Crown icon**: Shows in top-left after completing today's game (free users)
+- **Season Ticket holders**: Can play unlimited games throughout the day
+- **Season Ticket prompt**: Appears after completing a game (for free users only)
+- **Ticket icon**: Shows in top-left after completing today's game (free users)
 
 ### User Flow
 1. Free user completes their daily game
-2. Premium prompt appears: "Want to play more? Upgrade to Premium for unlimited daily games!"
+2. Season Ticket prompt appears: "Want to play more? Get a Season Ticket for unlimited daily games!"
 3. User can upgrade or wait until tomorrow
-4. Premium users can immediately start new games
+4. Season Ticket holders can immediately start new games
 
 ## 🧪 Testing
-- **Triple-tap the title "TubeGuessr"** to toggle premium status for testing
+- **Triple-tap the title "TubeGuessr"** to toggle Season Ticket status for testing
 - Use the StoreKit configuration file to test purchases
-- Test both free and premium user experiences
+- Test both free and Season Ticket holder experiences
 
 ## 🚀 Next Steps
 1. Add the files to your Xcode project target
@@ -80,7 +79,7 @@ Then uncomment the subscription-related code:
 
 ## 💡 Monetization Strategy
 - **Free tier**: Full game experience with daily limit (1 game/day)
-- **Premium tier**: Unlimited games + advanced features
+- **Season Ticket**: Unlimited games + advanced features
 - **7-day free trial** to encourage conversions
 - **Family sharing** disabled to maximize revenue
 - **Natural upgrade prompt** after users complete their daily game

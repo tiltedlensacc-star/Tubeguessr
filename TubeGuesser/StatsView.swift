@@ -430,7 +430,7 @@ struct SeasonTicketUpgradeView: View {
                         await SubscriptionManager.shared.loadSubscriptions()
 
                         // Purchase the monthly subscription
-                        if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.premium.monthly" }) {
+                        if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.seasonticket.monthly" }) {
                             do {
                                 _ = try await SubscriptionManager.shared.purchase(monthlyProduct)
 

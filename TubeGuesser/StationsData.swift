@@ -149,8 +149,6 @@ class StationsData: ObservableObject {
 
             Station(name: "Ealing Broadway", lines: [central, elizabeth], trivia: "The western terminus of the Central line and a major Elizabeth line station, serving as a key transport hub for West London and beyond.", location: "West London"),
 
-            Station(name: "Camden Road", lines: [northern, overground], trivia: "serves famous markets and music venues, connecting to both Underground and Overground networks.", location: "North London"),
-
             Station(name: "Shadwell", lines: [dlr, overground], trivia: "historic East London station in the heart of the former docklands.", location: "East London"),
 
             Station(name: "Warren Street", lines: [northern, victoria], trivia: "named after a developer who built houses in the area, it serves the bustling Fitzrovia district near the BBC Broadcasting House.", location: "Central London")

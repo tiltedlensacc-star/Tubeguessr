@@ -23,12 +23,29 @@ struct Station: Identifiable, Codable {
 
     init(name: String, lines: [TubeLine], trivia: String, location: String) {
         // Use normalized name as deterministic ID
-        self._normalizedName = name.lowercased()
+        var normalized = name.lowercased()
+
+        // Remove all types of apostrophes and quotes
+        let apostrophes = ["'", "\u{2018}", "\u{2019}"] // straight, left single, right single
+        for apostrophe in apostrophes {
+            normalized = normalized.replacingOccurrences(of: apostrophe, with: "")
+        }
+
+        let quotes = ["\"", "\u{201C}", "\u{201D}"] // straight, left double, right double
+        for quote in quotes {
+            normalized = normalized.replacingOccurrences(of: quote, with: "")
+        }
+
+        // Remove other punctuation and spaces
+        normalized = normalized
             .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "'", with: "")
             .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: ",", with: "")
             .replacingOccurrences(of: "-", with: "")
+            .replacingOccurrences(of: "_", with: "")
             .replacingOccurrences(of: "&", with: "and")
+
+        self._normalizedName = normalized
         self.id = self._normalizedName // Deterministic ID based on station name
         self.name = name
         self.lines = lines
@@ -142,8 +159,7 @@ class SubscriptionManager: ObservableObject {
     @Published var subscriptionGroupStatus: Product.SubscriptionInfo.Status?
 
     private let productIds: Set<String> = [
-        "com.tubeguessr.premium.monthly",
-        "com.tubeguessr.premium.yearly"
+        "com.tubeguessr.seasonticket.monthly"
     ]
 
     private var updates: Task<Void, Never>? = nil
@@ -168,28 +184,45 @@ class SubscriptionManager: ObservableObject {
     // MARK: - Product Loading
     func loadSubscriptions() async {
         do {
+            print("Loading subscription products with IDs: \(productIds)")
             subscriptions = try await Product.products(for: productIds)
                 .sorted(by: { $0.price < $1.price })
+            print("Successfully loaded \(subscriptions.count) subscription products")
+            if subscriptions.isEmpty {
+                print("WARNING: No subscription products were returned. Check App Store Connect configuration.")
+            }
         } catch {
             print("Failed to load products: \(error.localizedDescription)")
+            print("Error details: \(error)")
         }
     }
 
     // MARK: - Purchase Handling
     func purchase(_ product: Product) async throws -> StoreKit.Transaction? {
+        print("Attempting to purchase product: \(product.id)")
+
         let result = try await product.purchase()
 
         switch result {
         case .success(let verification):
+            print("Purchase successful, verifying transaction...")
             let transaction = try checkVerified(verification)
+            print("Transaction verified successfully")
             await updateCustomerProductStatus()
             await transaction.finish()
+            print("Transaction finished and status updated")
             return transaction
 
-        case .userCancelled, .pending:
+        case .userCancelled:
+            print("User cancelled the purchase")
+            return nil
+
+        case .pending:
+            print("Purchase is pending")
             return nil
 
         @unknown default:
+            print("Unknown purchase result")
             return nil
         }
     }
@@ -286,10 +319,8 @@ class SubscriptionManager: ObservableObject {
             let productID = transaction.productID
 
             switch productID {
-            case "com.tubeguessr.premium.monthly":
-                return "Premium Monthly"
-            case "com.tubeguessr.premium.yearly":
-                return "Premium Yearly"
+            case "com.tubeguessr.seasonticket.monthly":
+                return "Season Ticket"
             default:
                 return "Unknown subscription"
             }

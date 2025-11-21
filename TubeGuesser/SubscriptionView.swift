@@ -6,6 +6,8 @@ struct SubscriptionView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isLoading = false
     @State private var selectedProduct: Product?
+    @State private var showError = false
+    @State private var errorMessage = ""
 
     var body: some View {
         NavigationView {
@@ -29,7 +31,7 @@ struct SubscriptionView: View {
                 }
                 .padding()
             }
-            .navigationTitle("TubeGuessr Premium")
+            .navigationTitle("Season Ticket")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -53,6 +55,11 @@ struct SubscriptionView: View {
             await subscriptionManager.loadSubscriptions()
             selectedProduct = subscriptionManager.subscriptions.first
         }
+        .alert("Purchase Error", isPresented: $showError) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(errorMessage)
+        }
     }
 
     private var headerSection: some View {
@@ -61,7 +68,7 @@ struct SubscriptionView: View {
                 .font(.system(size: 60))
                 .foregroundColor(.yellow)
 
-            Text("Upgrade to Premium")
+            Text("Get Your Season Ticket")
                 .font(.system(size: 28, weight: .bold, design: .serif))
                 .foregroundColor(Color(hex: "#2E7DF6"))
 
@@ -79,8 +86,14 @@ struct SubscriptionView: View {
 
             Text("Loading subscription options...")
                 .foregroundColor(.secondary)
+
+            Text("If this persists, subscriptions may not be configured in App Store Connect yet.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
         }
-        .frame(height: 100)
+        .frame(minHeight: 150)
     }
 
     private var subscriptionOptions: some View {
@@ -98,7 +111,7 @@ struct SubscriptionView: View {
 
     private var featuresSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Premium Features")
+            Text("Season Ticket Features")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "#2E7DF6"))
@@ -125,7 +138,7 @@ struct SubscriptionView: View {
                 FeatureRow(
                     icon: "sparkles",
                     title: "Exclusive Content",
-                    description: "Access premium station collections"
+                    description: "Access exclusive station collections"
                 )
 
                 FeatureRow(
@@ -182,15 +195,11 @@ struct SubscriptionView: View {
                 .multilineTextAlignment(.center)
 
             HStack(spacing: 20) {
-                Button("Privacy Policy") {
-                    // Handle privacy policy
-                }
-                .foregroundColor(Color(hex: "#2E7DF6"))
+                Link("Privacy Policy", destination: URL(string: "https://tiltedlensacc-star.github.io/Tubeguessr/privacy-policy.html")!)
+                    .foregroundColor(Color(hex: "#2E7DF6"))
 
-                Button("Terms of Service") {
-                    // Handle terms of service
-                }
-                .foregroundColor(Color(hex: "#2E7DF6"))
+                Link("Terms of Service", destination: URL(string: "https://tiltedlensacc-star.github.io/Tubeguessr/terms.html")!)
+                    .foregroundColor(Color(hex: "#2E7DF6"))
             }
             .font(.caption)
         }
@@ -202,10 +211,19 @@ struct SubscriptionView: View {
         do {
             let transaction = try await subscriptionManager.purchase(product)
             if transaction != nil {
+                // Successfully purchased, update game manager and dismiss
+                await GameManager.shared.syncPremiumStatusFromSubscriptionManager()
                 dismiss()
+            } else {
+                // User cancelled or purchase pending
+                errorMessage = "Purchase was cancelled or is pending. Please try again."
+                showError = true
             }
         } catch {
-            // Handle error silently
+            // Handle purchase errors with user feedback
+            errorMessage = "Unable to complete purchase: \(error.localizedDescription)"
+            showError = true
+            print("Purchase error: \(error)")
         }
 
         isLoading = false

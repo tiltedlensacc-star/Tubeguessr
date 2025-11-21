@@ -700,7 +700,7 @@ struct GameView: View {
                         // Ensure subscriptions are loaded
                         await SubscriptionManager.shared.loadSubscriptions()
 
-                        if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.premium.monthly" }) {
+                        if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.seasonticket.monthly" }) {
                             do {
                                 _ = try await SubscriptionManager.shared.purchase(monthlyProduct)
 
@@ -1169,7 +1169,7 @@ struct InfoView: View {
                                     // Ensure subscriptions are loaded
                                     await SubscriptionManager.shared.loadSubscriptions()
 
-                                    if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.premium.monthly" }) {
+                                    if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.seasonticket.monthly" }) {
                                         do {
                                             _ = try await SubscriptionManager.shared.purchase(monthlyProduct)
 

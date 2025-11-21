@@ -92,38 +92,9 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.tubeguessr.premium.monthly",
+          "productID" : "com.tubeguessr.seasonticket.monthly",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Season Ticket Monthly",
-          "subscriptionGroupID" : "21480890",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "11.99",
-          "familyShareable" : false,
-          "groupNumber" : 2,
-          "internalID" : "6476274249",
-          "introductoryOffer" : {
-            "internalID" : "20482698",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P1W"
-          },
-          "localizations" : [
-            {
-              "description" : "Get unlimited daily games and advanced statistics - best value!",
-              "displayName" : "Season Ticket Yearly",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "com.tubeguessr.premium.yearly",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Season Ticket Yearly",
           "subscriptionGroupID" : "21480890",
           "type" : "RecurringSubscription"
         }
