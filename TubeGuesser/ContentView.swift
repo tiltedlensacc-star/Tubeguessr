@@ -7,8 +7,8 @@ struct ContentView: View {
     init() {
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
-        appearance.stackedLayoutAppearance.normal.iconPositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
-        appearance.stackedLayoutAppearance.selected.iconPositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
+
+        // Adjust title position for both normal and selected states
         appearance.stackedLayoutAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
         appearance.stackedLayoutAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
 
