@@ -4,20 +4,6 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @State private var showWelcomeScreen = true
 
-    init() {
-        let appearance = UITabBarAppearance()
-        appearance.configureWithDefaultBackground()
-
-        // Adjust title position for both normal and selected states
-        appearance.stackedLayoutAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
-        appearance.stackedLayoutAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -8)
-
-        UITabBar.appearance().standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
-    }
-
     var body: some View {
         TabView(selection: $selectedTab) {
             GameView(showWelcomeScreen: $showWelcomeScreen)
