@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
     private let baseURL = "https://tiltedlensacc-star.github.io/Tubeguessr"
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+    @State private var showResetAlert = false
 
     var body: some View {
         NavigationView {
@@ -82,9 +84,46 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
                 .listRowBackground(Color.clear)
+
+                #if DEBUG
+                Section("Debug Options") {
+                    Button(action: {
+                        showResetAlert = true
+                    }) {
+                        HStack {
+                            Label("Reset Subscription Status", systemImage: "arrow.clockwise")
+                                .foregroundColor(.orange)
+                            Spacer()
+                        }
+                    }
+
+                    if subscriptionManager.hasActiveSubscription {
+                        Text("Current Status: Active Subscription")
+                            .font(.caption)
+                            .foregroundColor(.green)
+                    } else {
+                        Text("Current Status: No Subscription")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                #endif
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
+            .alert("Reset Subscription Status", isPresented: $showResetAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Reset", role: .destructive) {
+                    Task {
+                        // Force refresh subscription status
+                        await subscriptionManager.updateCustomerProductStatus()
+                        // Update game manager
+                        GameManager.shared.syncPremiumStatusFromSubscriptionManager()
+                    }
+                }
+            } message: {
+                Text("This will refresh your subscription status from the App Store. Use this to test the subscription flow.")
+            }
         }
     }
 }
