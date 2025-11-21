@@ -37,7 +37,9 @@ class GameManager: ObservableObject {
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.appWillResignActive()
+            Task { @MainActor in
+                self?.appWillResignActive()
+            }
         }
 
         NotificationCenter.default.addObserver(
@@ -45,7 +47,9 @@ class GameManager: ObservableObject {
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.appDidBecomeActive()
+            Task { @MainActor in
+                self?.appDidBecomeActive()
+            }
         }
     }
 
