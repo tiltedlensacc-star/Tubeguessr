@@ -1010,6 +1010,7 @@ struct StarShape: Shape {
 struct InfoView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+    @State private var showSeasonTicket = false
 
     var showBackButton: Bool = false
     var onDismiss: (() -> Void)? = nil
@@ -1148,23 +1149,7 @@ struct InfoView: View {
                                 .padding(.top, 8)
 
                             Button(action: {
-                                Task {
-                                    // Ensure subscriptions are loaded
-                                    await SubscriptionManager.shared.loadSubscriptions()
-
-                                    if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.seasonticket.monthly" }) {
-                                        do {
-                                            _ = try await SubscriptionManager.shared.purchase(monthlyProduct)
-
-                                            // Update GameManager premium status
-                                            GameManager.shared.syncPremiumStatusFromSubscriptionManager()
-                                            // Also update directly as a backup
-                                            GameManager.shared.updatePremiumStatus(true)
-                                        } catch {
-                                            // Handle error silently
-                                        }
-                                    }
-                                }
+                                showSeasonTicket = true
                             }) {
                                 HStack {
                                     Image(systemName: "ticket.fill")
@@ -1188,6 +1173,9 @@ struct InfoView: View {
                 }
                 .padding()
             }
+        }
+        .sheet(isPresented: $showSeasonTicket) {
+            SeasonTicketView()
         }
     }
 }
