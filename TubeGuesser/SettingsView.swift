@@ -26,7 +26,7 @@ struct SettingsView: View {
                 }
                 .listRowBackground(Color.clear)
 
-                Section("About") {
+                Section {
                     Text("A daily guessing game where you identify London Underground stations based on the lines they serve.")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
