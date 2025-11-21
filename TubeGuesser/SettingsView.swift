@@ -12,7 +12,7 @@ struct SettingsView: View {
                             .font(.system(size: 60))
                             .foregroundColor(Color(hex: "#2E7DF6"))
 
-                        Text("TubeGuesser")
+                        Text("Tubeguessr")
                             .font(.title)
                             .fontWeight(.bold)
 
@@ -82,7 +82,7 @@ struct SettingsView: View {
                 }
                 .listRowBackground(Color.clear)
             }
-            .navigationTitle("Tubeguessr")
+            .navigationTitle("About")
             .navigationBarTitleDisplayMode(.large)
         }
     }
