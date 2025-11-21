@@ -153,7 +153,7 @@ struct GameView: View {
             InfoView()
         }
         .sheet(isPresented: $showSeasonTicketUpgrade) {
-            SeasonTicketUpgradeView()
+            SeasonTicketView()
         }
         .fullScreenCover(isPresented: $showStats) {
             StatsView(showBackButton: true, onDismiss: {

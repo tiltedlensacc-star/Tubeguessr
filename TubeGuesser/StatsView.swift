@@ -93,7 +93,7 @@ struct StatsView: View {
             InfoView()
         }
         .sheet(isPresented: $showSeasonTicketUpgrade) {
-            SeasonTicketUpgradeView()
+            SeasonTicketView()
         }
         .onAppear {
             Task {
