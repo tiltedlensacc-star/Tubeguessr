@@ -21,7 +21,8 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
+                    .padding(.top, 10)
+                    .padding(.bottom, 5)
                 }
                 .listRowBackground(Color.clear)
 
