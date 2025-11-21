@@ -165,10 +165,9 @@ struct GameView: View {
                 showHowToPlay = false
             })
         }
-        // Subscription view (commented out until StoreKit files are added to project)
-        // .fullScreenCover(isPresented: $showSubscription) {
-        //     SubscriptionView()
-        // }
+        .fullScreenCover(isPresented: $showSubscription) {
+            SubscriptionView()
+        }
     }
 
     private var hintUsedPopup: some View {
@@ -694,24 +693,8 @@ struct GameView: View {
                         withAnimation(.easeInOut(duration: 0.1)) {
                             seasonTicketButtonScale = 1.0
                         }
-                    }
-
-                    Task {
-                        // Ensure subscriptions are loaded
-                        await SubscriptionManager.shared.loadSubscriptions()
-
-                        if let monthlyProduct = SubscriptionManager.shared.subscriptions.first(where: { $0.id == "com.tubeguessr.seasonticket.monthly" }) {
-                            do {
-                                _ = try await SubscriptionManager.shared.purchase(monthlyProduct)
-
-                                // Update GameManager premium status
-                                GameManager.shared.syncPremiumStatusFromSubscriptionManager()
-                                // Also update directly as a backup
-                                GameManager.shared.updatePremiumStatus(true)
-                            } catch {
-                                // Handle error silently
-                            }
-                        }
+                        // Show subscription view
+                        showSubscription = true
                     }
                 }) {
                     HStack {
