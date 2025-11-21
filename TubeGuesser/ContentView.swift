@@ -12,7 +12,7 @@ struct ContentView: View {
                         Image(systemName: "tram.fill")
                         Text("Game")
                     }
-                    .padding(.vertical, 12)
+                    .padding(.vertical, 20)
                 }
                 .tag(0)
 
@@ -22,7 +22,7 @@ struct ContentView: View {
                         Image(systemName: "chart.bar")
                         Text("Stats")
                     }
-                    .padding(.vertical, 12)
+                    .padding(.vertical, 20)
                 }
                 .tag(1)
 
@@ -32,7 +32,7 @@ struct ContentView: View {
                         Image(systemName: "gearshape.fill")
                         Text("About")
                     }
-                    .padding(.vertical, 12)
+                    .padding(.vertical, 20)
                 }
                 .tag(2)
         }
