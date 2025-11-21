@@ -82,7 +82,7 @@ struct SettingsView: View {
                 }
                 .listRowBackground(Color.clear)
             }
-            .navigationTitle("About")
+            .navigationTitle("Tubeguessr")
             .navigationBarTitleDisplayMode(.large)
         }
     }
