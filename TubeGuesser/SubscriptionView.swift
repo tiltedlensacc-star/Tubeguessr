@@ -1,7 +1,7 @@
 import SwiftUI
 import StoreKit
 
-struct SubscriptionView: View {
+struct SeasonTicketView: View {
     @StateObject private var subscriptionManager = SubscriptionManager.shared
     @Environment(\.dismiss) private var dismiss
     @State private var isLoading = false
@@ -305,5 +305,5 @@ struct FeatureRow: View {
 }
 
 #Preview {
-    SubscriptionView()
+    SeasonTicketView()
 }
