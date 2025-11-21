@@ -31,8 +31,8 @@ struct SeasonTicketView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Season Ticket")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Close") {
@@ -127,24 +127,6 @@ struct SeasonTicketView: View {
                     icon: "chart.bar.fill",
                     title: "Advanced Statistics",
                     description: "Unlock streak tracking, average guesses, and completion time metrics"
-                )
-
-                FeatureRow(
-                    icon: "star.fill",
-                    title: "Priority Access",
-                    description: "Be first to try new features and stations"
-                )
-
-                FeatureRow(
-                    icon: "sparkles",
-                    title: "Exclusive Content",
-                    description: "Access exclusive station collections"
-                )
-
-                FeatureRow(
-                    icon: "xmark.circle.fill",
-                    title: "No Daily Limits",
-                    description: "Never wait until tomorrow to play again"
                 )
             }
         }
