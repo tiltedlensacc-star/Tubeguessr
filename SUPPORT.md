@@ -6,7 +6,7 @@ Welcome to TubeGuesser support! We're here to help you with any questions or iss
 
 Need help? Have feedback? Found a bug? We'd love to hear from you!
 
-**Email:** [milesbennett90@yahoo.co.uk](mailto:milesbennett90@yahoo.co.uk)
+**Email:** [tubeguessr@gmail.com](mailto:tubeguessr@gmail.com)
 
 We typically respond within 24-48 hours.
 
@@ -51,7 +51,7 @@ Try these steps:
 2. Check your internet connection
 3. In the app, tap the Premium/Crown icon and use "Restore Purchases"
 4. Restart your device
-5. If the issue persists, contact us at [milesbennett90@yahoo.co.uk](mailto:milesbennett90@yahoo.co.uk)
+5. If the issue persists, contact us at [tubeguessr@gmail.com](mailto:tubeguessr@gmail.com)
 
 ### Will my statistics be saved if I delete and reinstall the app?
 
@@ -73,7 +73,7 @@ All purchases are processed through the Apple App Store. To request a refund, vi
 
 ## 🐛 Report a Bug
 
-Found a bug or issue? Please email us at [milesbennett90@yahoo.co.uk](mailto:milesbennett90@yahoo.co.uk) with:
+Found a bug or issue? Please email us at [tubeguessr@gmail.com](mailto:tubeguessr@gmail.com) with:
 
 - A description of the issue
 - What you were doing when it occurred
@@ -84,7 +84,7 @@ Found a bug or issue? Please email us at [milesbennett90@yahoo.co.uk](mailto:mil
 
 ## 💡 Feature Requests
 
-Have an idea to make TubeGuesser better? We'd love to hear it! Send your suggestions to [milesbennett90@yahoo.co.uk](mailto:milesbennett90@yahoo.co.uk)
+Have an idea to make TubeGuesser better? We'd love to hear it! Send your suggestions to [tubeguessr@gmail.com](mailto:tubeguessr@gmail.com)
 
 ---
 

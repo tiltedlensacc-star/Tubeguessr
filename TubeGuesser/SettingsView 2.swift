@@ -64,7 +64,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    Link(destination: URL(string: "mailto:tubeguessr@gmail.com")!) {
+                    Link(destination: URL(string: "mailto:milesbennett90@yahoo.co.uk")!) {
                         HStack {
                             Label("Contact Us", systemImage: "envelope.fill")
                             Spacer()

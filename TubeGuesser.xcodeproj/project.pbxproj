@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		2206E1BE2E83ED3C00A6E565 /* Configuration 2.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Configuration 2.storekit"; sourceTree = "<group>"; };
 		22803BFE2ED0BF57009E79D1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		22803C002ED0C2F7009E79D1 /* SettingsView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView 2.swift"; sourceTree = "<group>"; };
 		A1B2C3D4E5F60002 /* TubeGuesserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TubeGuesserApp.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60006 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 				A1B2C3D4E5F60008 /* StatsView.swift */,
 				2206E1BE2E83ED3C00A6E565 /* Configuration 2.storekit */,
 				A1B2C3D4E5F6000A /* Models.swift */,
+				22803C002ED0C2F7009E79D1 /* SettingsView 2.swift */,
 				A1B2C3D4E5F6000C /* StationsData.swift */,
 				A1B2C3D4E5F6000E /* GameManager.swift */,
 				A1B2C3D4E5F60010 /* PersistenceManager.swift */,
